@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dbaas-{{ .Release.Name }}
+  labels:
+    app/managed-by: cnpg-operator  # This label is used by the operator to manage the resources in this namespace

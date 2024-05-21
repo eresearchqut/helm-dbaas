@@ -1,0 +1,46 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Release.Name }}{{- with .Values.database.suffix }}-{{ . }}{{- end }}
+  namespace: dbaas-{{ .Release.Name }}
+  labels:
+    managedby: cnpg-operator
+    workload: database
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:{{ .Values.database.version }}
+  instances: {{ .Values.database.instances }}
+
+  storage:
+    storageClass: {{ .Values.database.storageclass }}
+    size: {{ .Values.database.storage }}
+  walStorage:
+    storageClass: {{ .Values.database.storageclass }}
+    size: {{ .Values.database.walStorage }}
+
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "2"
+    limits:
+      memory: "8Gi"
+      cpu: "4"
+
+  monitoring:
+    enablePodMonitor: {{ .Values.database.monitoring }}
+
+  bootstrap:
+    initdb:
+      database: {{ .Release.Name }}
+      owner: {{ .Values.database.user }}
+
+  postgresql:
+    ldap:
+      server: {{ .Values.ldap.server }}
+      bindSearchAuth:
+        baseDN: {{ .Values.ldap.baseDN }}
+        bindDN: {{ .Values.ldap.bindDN }}
+        bindPassword:
+          name: {{ .Release.Name }}{{- with .Values.database.suffix }}-{{ . }}{{- end }}-ldap-creds
+          key: 'password'
+        searchAttribute: {{ .Values.ldap.searchAttribute }}

@@ -1,0 +1,9 @@
+._*
+.DS_Store
+.env
+.vscode
+*.agekey
+*.key
+*.kubeconfig
+*.pem
+*.tmp.yaml
