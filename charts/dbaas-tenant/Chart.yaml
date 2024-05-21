@@ -3,7 +3,7 @@ apiVersion: v2
 name: dbaas-tenant
 description: A Helm chart to deploy a tenant in the CNPG DBaaS platform
 type: application
-version: 0.1.0
+version: 0.1.1
 keywords:
   - kubernetes
   - helm
