@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  dbaas-tenant:
+  - apiVersion: v2
+    created: "2024-05-21T04:13:42.941348752Z"
+    description: A Helm chart to deploy a tenant in the CNPG DBaaS platform
+    digest: cec2163fbc2185013f1cbf9c79690e5218911b595e32d48f061a9ef3b875bc7e
+    home: https://github.com/eresearchqut/helm-dbaas
+    keywords:
+    - kubernetes
+    - helm
+    - cnpg
+    - postgresql
+    - dbaas
+    maintainers:
+    - email: lmacka@gmail.com
+      name: Liam MacKenzie
+    name: dbaas-tenant
+    type: application
+    urls:
+    - https://eresearchqut.github.io/helm-dbaas/dbaas-tenant-0.1.1.tgz
+    version: 0.1.1
+generated: "2024-05-21T04:13:42.940900092Z"
