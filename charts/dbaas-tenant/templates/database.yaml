@@ -20,11 +20,11 @@ spec:
 
   resources:
     requests:
-      memory: "4Gi"
+      memory: "2Gi"
       cpu: "2"
     limits:
-      memory: "8Gi"
-      cpu: "4"
+      memory: {{ .Values.database.memory }}
+      cpu: {{ .Values.database.cpu }}
 
   monitoring:
     enablePodMonitor: {{ .Values.database.monitoring }}
@@ -41,6 +41,6 @@ spec:
         baseDN: {{ .Values.ldap.baseDN }}
         bindDN: {{ .Values.ldap.bindDN }}
         bindPassword:
-          name: {{ .Release.Name }}{{- with .Values.database.suffix }}-{{ . }}{{- end }}-ldap-creds
+          name: dbaas-ldap-creds
           key: 'password'
         searchAttribute: {{ .Values.ldap.searchAttribute }}

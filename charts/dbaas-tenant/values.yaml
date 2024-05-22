@@ -2,40 +2,29 @@
 database:
   # Choose from https://ghcr.io/cloudnative-pg/postgresql
   version: 16.2-bookworm
-
   # Define how many read-replicas you want. Specify 1 for a single node cluster.
   instances: 1
-
   # Suffix for the cluster name, enabling multiple database clusters in the same namespace
   suffix:
-
   # LDAP username to be granted access to the database
   user:
-
+  # Resource limits for the database pods
+  memory: "8Gi"
+  cpu: "4"
   # Storage class to use for the database volume & WAL storage
   storageclass:
-
   # Thin-provisioned volume for the database
   storage: 20Gi
-
   # Thin-provisioned volume for the Write-Ahead Log (WAL).  25% of the database volume is a good starting point.
   walStorage: 5Gi
-
   # Enable Prometheus pod monitoring & Grafana dashboards
   monitoring: true
-
 # LDAP server to use for authentication
 ldap:
   server:
-
   # Base DN for the LDAP search
   baseDN:
-
   # Bind DN for the LDAP bind user
   bindDN:
-
   # LDAP attribute to search for
   searchAttribute:
-
-  # Base64 encrypted password for the LDAP bind user
-  password:
